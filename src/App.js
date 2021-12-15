@@ -13,6 +13,7 @@ function App() {
   const [optionDatas, setOptionDatas] = useState([]);
   const [currentOption, setCurrentOption] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const isBase = currentOption["타입"] === "기본";
 
   useEffect(() => {
     const initialOption = optionsMock?.reduce((result, option) => {
@@ -89,7 +90,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Container>
-        <SwiperBox />
+        <SwiperBox isBase={isBase}/>
         <OptionsBox
           optionDatas={optionDatas}
           currentOption={currentOption}

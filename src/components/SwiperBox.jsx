@@ -7,7 +7,7 @@ import PrevMainButtonSrc from "../assets/btn-prev-4040.svg";
 import NextThumbButtonSrc from "../assets/btn-next.svg";
 import PrevThumbButtonSrc from "../assets/btn-prev.svg";
 
-function SwiperBox() {
+function SwiperBox({ isBase }) {
   const [position, setPosition] = useState(0);
   const [mainImgs, setMainImgs] = useState([]);
   const [thumbNails, setThumbNails] = useState([]);
@@ -46,6 +46,12 @@ function SwiperBox() {
     setMainImgs(mainImgsData);
     setThumbNails(thumbNailsData);
   }, [showCaseMock]);
+
+  useEffect(() => {
+    if (isBase) {
+      setPosition(0);
+    }
+  }, [isBase]);
 
   return (
     <Wrapper>
