@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
-function SelectBox({ optionDatas, handleCurrentOption }) {
+function SelectBox({ optionDatas, currentOption, handleCurrentOption }) {
   if (!optionDatas.length) {
     return null;
   }
@@ -9,21 +9,21 @@ function SelectBox({ optionDatas, handleCurrentOption }) {
   return (
     <>
       {optionDatas?.map((option) => {
+        const title = option.title;
         const buttons = option.child;
         return (
-          <Wrapper key={option.title}>
-            <span>{option.title}</span>
-            <ButtonBox key={option.title}>
+          <Wrapper key={title}>
+            <span>{title}</span>
+            <ButtonBox key={title}>
               {buttons.map((button) => {
                 return (
-                  <button
-                    onClick={() =>
-                      handleCurrentOption(option.title, button.label)
-                    }
-                    key={`${option.title}_${button.label}`}
+                  <Button
+                    active={currentOption[title] === button.label}
+                    onClick={() => handleCurrentOption(title, button.label)}
+                    key={`${title}_${button.label}`}
                   >
                     {button.label}
-                  </button>
+                  </Button>
                 );
               })}
             </ButtonBox>
@@ -53,13 +53,19 @@ const ButtonBox = styled.div`
   display: flex;
   gap: 4px;
   height: 40px;
+`;
 
-  button {
-    width: 100%;
-    height: 40px;
-    border: 1px solid ${({ theme }) => theme.color.whiteThree};
-    font-size: 12px;
-    color: ${({ theme }) => theme.color.black};
+const Button = styled.button`
+  width: 100%;
+  height: 40px;
+  border: 1px solid
+    ${({ active, theme }) => {
+      return active ? theme.color.black : theme.color.whiteThree;
+    }};
+  font-size: 12px;
+  color: ${({ theme }) => theme.color.black};
+  &:hover {
+    border-color: ${({ theme }) => theme.color.black};
   }
 `;
 

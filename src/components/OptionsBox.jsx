@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import SelectBox from "./SelectBox";
@@ -23,6 +23,7 @@ function OptionsBox({
         <Title>옵션 선택</Title>
         <SelectBox
           optionDatas={optionDatas}
+          currentOption={currentOption}
           handleCurrentOption={handleCurrentOption}
         />
         <QuantBox>
