@@ -35,16 +35,49 @@ function App() {
     });
   }
 
+  function handlePlusQuantity() {
+    if (quantity === 999) {
+      return;
+    }
+
+    const result = quantity + 1;
+
+    setQuantity(result);
+  }
+
+  function handleMinusQuantity() {
+    if (quantity === 1) {
+      return;
+    }
+
+    const result = quantity - 1;
+
+    setQuantity(result);
+  }
+
+  function handleTypeQuantity(e) {
+    const input = Number(e.target.value);
+
+    if (input > 999 || input < 0) {
+      return;
+    }
+
+    setQuantity(input);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Container>
         <SwiperBox />
         <OptionsBox
-          quantity={quantity}
           optionDatas={optionDatas}
           currentOption={currentOption}
           handleCurrentOption={handleCurrentOption}
+          quantity={quantity}
+          handlePlusQuantity={handlePlusQuantity}
+          handleMinusQuantity={handleMinusQuantity}
+          handleTypeQuantity={handleTypeQuantity}
         />
       </Container>
     </ThemeProvider>

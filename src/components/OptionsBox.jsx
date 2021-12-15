@@ -8,10 +8,13 @@ import PlusImage from "../assets/btn-plus-2438.svg";
 import MinusImage from "../assets/btn-minus-2438.svg";
 
 function OptionsBox({
-  quantity,
   optionDatas,
   currentOption,
   handleCurrentOption,
+  quantity,
+  handlePlusQuantity,
+  handleMinusQuantity,
+  handleTypeQuantity,
 }) {
   return (
     <Container>
@@ -24,15 +27,19 @@ function OptionsBox({
         <QuantBox>
           <span>수량</span>
           <SelectQuant>
-            <MinusButton src={MinusImage}></MinusButton>
-            <span>number</span>
-            <PlusButton src={PlusImage} />
+            <MinusButton onClick={handleMinusQuantity} src={MinusImage} />
+            <Quantity
+              type="number"
+              value={quantity}
+              onChange={handleTypeQuantity}
+            />
+            <PlusButton onClick={handlePlusQuantity} src={PlusImage} />
           </SelectQuant>
         </QuantBox>
         <InfoBox>
           <span className="title">기본 / 거치대</span>
           <div className="price">
-            <span>수량: </span>
+            <span>수량: {quantity}</span>
             <span>5,000원</span>
           </div>
         </InfoBox>
@@ -100,6 +107,15 @@ const MinusButton = styled.img`
   height: 38px;
   object-fit: contain;
   cursor: pointer;
+`;
+
+const Quantity = styled.input`
+  width: 50%;
+  text-align: center;
+
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `;
 
 const PlusButton = styled.img`
