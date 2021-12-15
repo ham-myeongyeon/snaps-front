@@ -19,9 +19,9 @@ function App() {
       const title = option["title"];
       const label = option.child[0]["label"];
 
-      const current = { [title]: label };
+      const currentData = { [title]: label };
 
-      return Object.assign(result, current);
+      return Object.assign(result, currentData);
     }, {});
 
     setOptionDatas(optionsMock);
@@ -77,6 +77,11 @@ function App() {
   }
 
   function handleCreate() {
+    if (currentOption["수량"] <= 0 || currentOption["수량"] > 999) {
+      alert("수량을 확인 해주세요");
+      return;
+    }
+
     console.log(currentOption);
   }
 

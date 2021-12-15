@@ -168,12 +168,13 @@ const PriceInfoBox = styled.div`
 
 const CreateButton = styled.div`
   margin-bottom: 24px;
+  height: 50px;
+  background-color: ${({ theme }) => theme.color.black};
   text-align: center;
   color: white;
-  height: 50px;
   font-size: 13px;
   line-height: 50px;
-  background-color: ${({ theme }) => theme.color.black};
+  cursor: pointer;
 `;
 
 export default OptionsBox;

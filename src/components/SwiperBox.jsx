@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import showCaseMock from "../Mockup/showcase.json";
+import NextMainButtonSrc from "../assets/btn-next-4040.svg";
+import PrevMainButtonSrc from "../assets/btn-prev-4040.svg";
+import NextThumbButtonSrc from "../assets/btn-next.svg";
+import PrevThumbButtonSrc from "../assets/btn-prev.svg";
 
 function SwiperBox() {
   const [position, setPosition] = useState(0);
@@ -46,15 +50,28 @@ function SwiperBox() {
   return (
     <Wrapper>
       <MainImgBox>
-        <PrevMainImgButton onClick={handlePrevImg}>{"<"}</PrevMainImgButton>
+        <PrevMainImgButton
+          src={PrevMainButtonSrc}
+          alt="prev-main-img-button"
+          onClick={handlePrevImg}
+        />
         <ImgGroup position={position}>
           {mainImgs.map((imgSrc) => (
             <img key={imgSrc} src={imgSrc} alt="main-img" />
           ))}
         </ImgGroup>
-        <NextMainImgButton onClick={handleNextImg}>{">"}</NextMainImgButton>
+        <NextMainImgButton
+          src={NextMainButtonSrc}
+          alt="next-main-img-button"
+          onClick={handleNextImg}
+        />
       </MainImgBox>
       <ThumbnailBox>
+        <PrevThumbButton
+          src={PrevThumbButtonSrc}
+          alt="prev-thumb-button"
+          onClick={handlePrevImg}
+        />
         {thumbNails.map((imgSrc, index) => (
           <ThumbNail
             key={imgSrc}
@@ -64,6 +81,11 @@ function SwiperBox() {
             onClick={() => handleClickThumbnail(index)}
           />
         ))}
+        <NextThumbButton
+          src={NextThumbButtonSrc}
+          alt="next-thumb-button"
+          onClick={handleNextImg}
+        />
       </ThumbnailBox>
     </Wrapper>
   );
@@ -79,22 +101,25 @@ const MainImgBox = styled.div`
   width: 752px;
   height: 752px;
   overflow: hidden;
-
-  button {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    z-index: 1;
-  }
 `;
 
-const PrevMainImgButton = styled.button`
+const PrevMainImgButton = styled.img`
+  position: absolute;
+  width: 40px;
+  height: 40px;
   top: 336px;
   left: 10px;
+  z-index: 1;
+  cursor: pointer;
 `;
-const NextMainImgButton = styled.button`
+const NextMainImgButton = styled.img`
+  position: absolute;
+  width: 40px;
+  height: 40px;
   top: 336px;
   right: 10px;
+  z-index: 1;
+  cursor: pointer;
 `;
 
 const ImgGroup = styled.div`
@@ -114,17 +139,24 @@ const ThumbnailBox = styled.div`
   margin-top: 24px;
   width: 752px;
   height: 73px;
-
-  button {
-    width: 9px;
-    height: 16px;
-  }
 `;
 
 const ThumbNail = styled.img`
   width: 73px;
   height: 73px;
   border: 1px solid ${({ theme, active }) => (active ? theme.black : "none")};
+  cursor: pointer;
+`;
+
+const PrevThumbButton = styled.img`
+  width: 9px;
+  height: 16px;
+  cursor: pointer;
+`;
+
+const NextThumbButton = styled.img`
+  width: 9px;
+  height: 16px;
   cursor: pointer;
 `;
 
