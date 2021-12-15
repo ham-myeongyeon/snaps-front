@@ -28,6 +28,17 @@ function App() {
     setCurrentOption({ ...initialOption, 수량: 1 });
   }, [optionsMock]);
 
+  useEffect(() => {
+    if (!Object.values(currentOption).length) {
+      return;
+    }
+
+    setCurrentOption({
+      ...currentOption,
+      수량: quantity,
+    });
+  }, [quantity]);
+
   function handleCurrentOption(title, select) {
     setCurrentOption({
       ...currentOption,
@@ -65,6 +76,10 @@ function App() {
     setQuantity(input);
   }
 
+  function handleCreate() {
+    console.log(currentOption);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -78,6 +93,7 @@ function App() {
           handlePlusQuantity={handlePlusQuantity}
           handleMinusQuantity={handleMinusQuantity}
           handleTypeQuantity={handleTypeQuantity}
+          handleCreate={handleCreate}
         />
       </Container>
     </ThemeProvider>

@@ -15,6 +15,7 @@ function OptionsBox({
   handlePlusQuantity,
   handleMinusQuantity,
   handleTypeQuantity,
+  handleCreate,
 }) {
   return (
     <Container>
@@ -47,7 +48,7 @@ function OptionsBox({
           <span className="title">총가격</span>
           <span className="price">5,000원</span>
         </PriceInfoBox>
-        <CreateButton>만들기</CreateButton>
+        <CreateButton onClick={handleCreate}>만들기</CreateButton>
         <NotifyBox />
       </Wrapper>
     </Container>
