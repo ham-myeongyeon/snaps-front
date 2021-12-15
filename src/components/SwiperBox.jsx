@@ -24,6 +24,10 @@ function SwiperBox() {
     setPosition(position - 1);
   }
 
+  function handleClickThumbnail(index) {
+    setPosition(index);
+  }
+
   useEffect(() => {
     const mainImgsData = [];
     const thumbNailsData = [];
@@ -51,16 +55,15 @@ function SwiperBox() {
         <NextMainImgButton onClick={handleNextImg}>{">"}</NextMainImgButton>
       </MainImgBox>
       <ThumbnailBox>
-        <PrevThumbnailButton onClick={handlePrevImg}>{"<"}</PrevThumbnailButton>
         {thumbNails.map((imgSrc, index) => (
           <ThumbNail
             key={imgSrc}
             src={imgSrc}
             alt="thumbnail"
             active={position === index}
+            onClick={() => handleClickThumbnail(index)}
           />
         ))}
-        <NextThumbnailButton onClick={handleNextImg}>{">"}</NextThumbnailButton>
       </ThumbnailBox>
     </Wrapper>
   );
@@ -122,10 +125,7 @@ const ThumbNail = styled.img`
   width: 73px;
   height: 73px;
   border: 1px solid ${({ theme, active }) => (active ? theme.black : "none")};
+  cursor: pointer;
 `;
-
-const PrevThumbnailButton = styled.button``;
-
-const NextThumbnailButton = styled.button``;
 
 export default SwiperBox;
