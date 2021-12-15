@@ -15,38 +15,6 @@ function App() {
   const [quantity, setQuantity] = useState(1);
   const isBase = currentOption["타입"] === "기본";
 
-  useEffect(() => {
-    const initialOption = optionsMock?.reduce((result, option) => {
-      const title = option["title"];
-      const label = option.child[0]["label"];
-
-      const currentData = { [title]: label };
-
-      return Object.assign(result, currentData);
-    }, {});
-
-    setOptionDatas(optionsMock);
-    setCurrentOption({ ...initialOption, 수량: 1 });
-  }, [optionsMock]);
-
-  useEffect(() => {
-    if (!Object.values(currentOption).length) {
-      return;
-    }
-
-    setCurrentOption({
-      ...currentOption,
-      수량: quantity,
-    });
-  }, [quantity]);
-
-  function handleCurrentOption(title, select) {
-    setCurrentOption({
-      ...currentOption,
-      [title]: select,
-    });
-  }
-
   function handlePlusQuantity() {
     if (quantity === 999) {
       return;
@@ -86,11 +54,43 @@ function App() {
     console.log(currentOption);
   }
 
+  useEffect(() => {
+    const initialOption = optionsMock?.reduce((result, option) => {
+      const title = option["title"];
+      const label = option.child[0]["label"];
+
+      const currentData = { [title]: label };
+
+      return Object.assign(result, currentData);
+    }, {});
+
+    setOptionDatas(optionsMock);
+    setCurrentOption({ ...initialOption, 수량: 1 });
+  }, [optionsMock]);
+
+  useEffect(() => {
+    if (!Object.values(currentOption).length) {
+      return;
+    }
+
+    setCurrentOption({
+      ...currentOption,
+      수량: quantity,
+    });
+  }, [quantity]);
+
+  function handleCurrentOption(title, select) {
+    setCurrentOption({
+      ...currentOption,
+      [title]: select,
+    });
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Container>
-        <SwiperBox isBase={isBase}/>
+        <SwiperBox isBase={isBase} />
         <OptionsBox
           optionDatas={optionDatas}
           currentOption={currentOption}

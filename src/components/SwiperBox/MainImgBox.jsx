@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import NextMainButtonSrc from "../assets/btn-next-4040.svg";
-import PrevMainButtonSrc from "../assets/btn-prev-4040.svg";
+import NextMainButtonSrc from "../../assets/btn-next-4040.svg";
+import PrevMainButtonSrc from "../../assets/btn-prev-4040.svg";
 
 function MainImgBox({ mainImgs, position, handlePrevImg, handleNextImg }) {
   return (

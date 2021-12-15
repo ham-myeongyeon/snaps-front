@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import showCaseMock from "../Mockup/showcase.json";
-import MainImgBox from "../components/MainImgBox";
-import ThumbnailBox from "../components/ThumbnailBox";
+import showCaseMock from "../../Mockup/showcase.json";
+import MainImgBox from "./MainImgBox";
+import ThumbnailBox from "./ThumbnailBox";
 
 function SwiperBox({ isBase }) {
   const [position, setPosition] = useState(0);

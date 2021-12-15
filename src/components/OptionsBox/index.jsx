@@ -4,8 +4,8 @@ import styled from "styled-components";
 import SelectBox from "./SelectBox";
 import NotifyBox from "./NotifyBox";
 
-import PlusImage from "../assets/btn-plus-2438.svg";
-import MinusImage from "../assets/btn-minus-2438.svg";
+import PlusImage from "../../assets/btn-plus-2438.svg";
+import MinusImage from "../../assets/btn-minus-2438.svg";
 
 function OptionsBox({
   optionDatas,

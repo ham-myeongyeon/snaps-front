@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import NextThumbButtonSrc from "../assets/btn-next.svg";
-import PrevThumbButtonSrc from "../assets/btn-prev.svg";
+import NextThumbButtonSrc from "../../assets/btn-next.svg";
+import PrevThumbButtonSrc from "../../assets/btn-prev.svg";
 
 function ThumbnailBox({
   thumbNails,
