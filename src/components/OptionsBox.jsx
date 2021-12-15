@@ -39,7 +39,7 @@ function OptionsBox({
           </SelectQuant>
         </QuantBox>
         <InfoBox>
-          <span className="title">기본 / 거치대</span>
+          <span className="title">{currentOption["타입"]} / {currentOption["옵션"]}</span>
           <div className="price">
             <span>수량: {quantity}</span>
             <span>5,000원</span>
@@ -65,7 +65,7 @@ const Wrapper = styled.div`
   height: 577px;
 `;
 
-const Title = styled.span`
+const Title = styled.h1`
   display: block;
   margin-bottom: 24px;
   width: 92px;
