@@ -9,6 +9,7 @@ function SwiperBox({ isBase }) {
   const [position, setPosition] = useState(0);
   const [mainImgs, setMainImgs] = useState([]);
   const [thumbNails, setThumbNails] = useState([]);
+  const [startPos, setStartPos] = useState(0);
 
   function handleNextImg() {
     if (position === mainImgs.length - 1) {
@@ -51,8 +52,23 @@ function SwiperBox({ isBase }) {
     }
   }, [isBase]);
 
+  function handleDragStart(e) {
+    setStartPos(e.pageX);
+  }
+
+  function handleDragEnd(e) {
+    const sum = e.pageX - startPos;
+    let destination = Math.round(sum / 752) * 0.4;
+
+    if (destination === 0.4) {
+      handleNextImg();
+    } else if (destination === -0.4) {
+      handlePrevImg();
+    }
+  }
+
   return (
-    <Wrapper>
+    <Wrapper onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <MainImgBox
         mainImgs={mainImgs}
         position={position}
